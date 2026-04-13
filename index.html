@@ -29,34 +29,86 @@
             <div class="container is-max-desktop">
                 <div class="columns is-centered">
                     <div class="column has-text-centered">
-                        <h1 class="title is-1 publication-title">Augmented Radiance Field: A General Framework for Enhanced Gaussian Splatting</h1>
+                        <h1 class="title is-1 publication-title">Augmented Radiance Field: A General Framework for Enhanced
+                            Gaussian Splatting</h1>
                         <div class="is-size-5 publication-authors">
                             <span class="author-block">
-                                <a href="https://github.com/XiaoXinyyx">Yixin Yang</a>,</span>
+                                <a href="https://github.com/XiaoXinyyx">Yixin Yang</a><sup>1</sup>,</span>
                             <span class="author-block">
-                                <a href="https://bojianwu.github.io/">Bojian Wu</a>,</span>
+                                <a href="https://bojianwu.github.io/">Bojian Wu</a><sup>2</sup>,</span>
                             <span class="author-block">
-                                <a href="https://zhouyangvcc.github.io/">Yang Zhou</a><sup>*</sup>,</span>
+                                <a href="https://zhouyangvcc.github.io/">Yang Zhou</a><sup>*1</sup>,</span>
                             <span class="author-block">
-                                <a href="https://vcc.tech/~huihuang">Hui Huang</a>,</span>
+                                <a href="https://vcc.tech/~huihuang">Hui Huang</a><sup>1</sup>,</span>
                         </div>
-
+    
                         <div class="is-size-5 publication-authors">
-                            <span class="author-block">Visual Computing Research Center, CSSE, Shenzhen University</span>
+                            <span class="author-block"><sup>1</sup>Visual Computing Research Center, CSSE, Shenzhen
+                                University</span>
                             <br>
-                            <span class="author-block">Tencent Games</span>
+                            <span class="author-block"><sup>2</sup>Tencent Games</span>
                             <br>
-                            <span class="author-block">International Conference on Learning Representations 2026</span>
+                            <span class="author-block">International Conference on Learning Representations (ICLR)
+                                2026</span>
                             <span class="eql-cntrb"><small><br><sup>*</sup>Corresponding Author</small></span>
                             <!-- <span class="author-block"><sup>2</sup>Google Research</span> -->
                         </div>
 
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <!-- PDF Link. -->
+                                <span class="link-block">
+                                    <a href="https://arxiv.org/pdf/2602.19916"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </span>
+                                        <span>Paper</span>
+                                    </a>
+                                </span>
+
+                                <!-- Paper Link. -->
+                                <span class="link-block">
+                                    <a href="https://arxiv.org/abs/2602.19916"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="ai ai-arxiv"></i>
+                                        </span>
+                                        <span>arXiv</span>
+                                    </a>
+                                </span>
+
+                                <!-- Code Link. -->
+                                <span class="link-block">
+                                    <a href="https://github.com/XiaoXinyyx/AuGS_Code"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fab fa-github"></i>
+                                        </span>
+                                        <span>Code</span>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <section class="hero teaser">
+        <div class="container is-max-desktop">
+            <div class="hero-body">
+                <img id="teaser" src="./static/images/teaser.png" alt="Teaser Image" style="width: 100%; height: auto">
+                <h2 class="content has-text-centered">
+                    We propose an augmented radiance field, which leverages Gaussian kernels with view-dependent opacity to accurately model
+                    specular highlights in the scene (left). It can be seamlessly plugged into existing Gaussian Splatting-based methods as
+                    a post enhancement, and notably, even using second-order spherical harmonics (sh=2) is sufficient to capture complex
+                    illumination (right).
+                </h2>
+            </div>
+        </div>
+    </section>
 
     <!-- Abstract. -->
     <section class="section">
@@ -81,36 +133,159 @@
     </section>
     <!--/ Abstract. -->
 
+    <!-- Method. -->
     <section class="section">
         <div class="container is-max-desktop">
-            <div class="columns is-centered has-text-centered">
-                <div class="column is-four-fifths">
-                    <h2 class="title is-3">Coming Soon</h2>
+            <div class="columns is-centered">
+                <div class="column is-full-width">
+                    <h2 class="title is-3">Method</h2>
+
+                    <div class="content has-text-justified">
+                        <p>
+                            We introduce an <b>error-driven densification</b> strategy: we first optimize 2D Gaussians in image space to reduce
+                            residual errors (left). Then we leverage depth map information to <b>back-project</b> 2D Gaussians into world space,
+                            and apply clustering, WPCA, and scaling calibration to minimize projection errors. The new primitives are initialized
+                            with a view-dependent opacity lobe oriented toward the corresponding camera (middle). We then jointly optimize the
+                            augmented Gaussians with the original scene to recover challenging view-dependent color and improve photometric
+                            consistency (right). Our post‑enhancement is plug‑and‑play with existing 3DGS frameworks and achieves higher quality
+                            with fewer SH parameters, especially for complex reflections.
+                        </p>
+                    </div>
+                    <div class="method-image" style="text-align: center;">
+                        <img src="./static/images/overview.png" alt="Method Diagram"
+                            style="width: 100%; height: auto; margin-top: 20px;">
+                        <p style="margin-bottom: 10px; font-size: 1rem;">
+                            <!-- caption -->
+                        </p>
+                    </div>
+                    
+                    <h2 class="title is-4" style="margin-top: 2.5rem;">View-dependent Opacity</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Inspired by classical Phong shading, we model view-dependent opacity with a cosine weighted function whose shape is
+                            controlled by two parameters: β, which governs the lobe’s sharpness, and T, which determines its angular extent. Along
+                            with the central orientation of the lobe, each new kernel introduces 5 learnable parameters to a standard Gaussian
+                            primitive.
+                        </p>
+                    </div>
+                    <div class="method-image" style="text-align: center;">
+                        <img src="./static/images/Phong_14.png" alt="Method Diagram"
+                            style="width: 100%; height: auto; margin-top: 20px;">
+                        <p style="margin-bottom: 10px; font-size: 1rem;">
+                            <!-- caption -->
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/ Method. -->
+
+    <!-- Results. -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column is-full-width">
+                    <h2 class="title is-3">Results</h2>
+
+                    <div class="content has-text-justified">
+                        <p>
+                            Our Gaussian supplementation strategy significantly enhances rendering quality across existing GS scenes. It is worth
+                            noting that, within the MCMC framework, although second-order SH (i.e., sh=2) reduce the parameter count by 21 per
+                            primitive compared to third-order SH (sh=3), they still achieve comparable rendering quality. Both approaches outperform
+                            the state-of-the-art implicit method Barron et al. (2023), demonstrating that our method facilitates the adaptation of
+                            Gaussian splatting to low-end hardware platforms. Compared with DBS Liu et al. (2025), the state-of-the-art
+                            explicit approach, our method outperforms it on real-world datasets. Compared with specular-aware methods, VoD-3DGS and
+                            Spec-Gaussian, our method achieves better results on almost all datasets.
+                        </p>
+                    </div>
+                    <div class="method-image" style="text-align: center;">
+                        <img src="./static/images/Qualitative.png" alt="Method Diagram"
+                            style="width: 100%; height: auto; margin-top: 20px;">
+                        <p style="margin-bottom: 10px; font-size: 1rem;">
+                            <!-- caption -->
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/ Results. -->
+
+
+    <!-- Videos -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-vcentered is-mobile">
+                <div class="column is-6">
+                    <video class="video-small" controls muted autoplay loop>
+                        <source src="static/videos/MipNerf.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="column is-6">
+                    <video class="video-small" controls muted autoplay loop>
+                        <source src="static/videos/NeRF_Syn.mp4" type="video/mp4">
+                    </video>
                 </div>
             </div>
         </div>
     </section>
 
+
+    <section class="section">
+        <div class="container">
+    
+            <div id="triple-compare" class="triple-compare">
+                <div class="layer layer-base"><img src="static/images/bonsai.png" /></div>
+                <div class="layer layer-mid"><img src="static/images/bonsai_aug.png" /></div>
+                <div class="layer layer-top"><img src="static/images/bonsai_gt.png" /></div>
+    
+                <!-- 两个滑块手柄 -->
+                <div class="handle handle-1" aria-label="Slider 1"></div>
+                <div class="handle handle-2" aria-label="Slider 2"></div>
+    
+                <!-- 标签（可选） -->
+                <div class="label label-base">Raw</div>
+                <div class="label label-mid">Augmented</div>
+                <div class="label label-top">Reference</div>
+            </div>
+        </div>
+    </section>
+
     <!-- Acknowledgements. -->
-    <!-- <section class="section"></section>
+    <section class="section"></section>
         <div class="container is-max-desktop">
             <div class="columns is-centered">
                 <div class="column is-full-width">
                     <h2 class="title is-3">Acknowledgements</h2>
                     <div class="content has-text-justified">
                         <p>
-                            This work was supported in parts by NSFC (U21B2023), ICFCRT (W2441020), 
-                            GD Basic and Applied Basic Research Foundation (2023B1515120026), 
-                            DEGP Innovation Team (2022KCXTD025), SZU Teaching Reform Key Program (JG2024018), 
-                            and Scientific Development Funds from Shenzhen University.
+                            This work was supported in parts by the National Key R&D Program of China (2024YFB3908500,2024YFB3908502),
+                            NSFC(U21B2023), Guangdong Basic and Applied Basic Research Foundation (2023B1515120026), and Scientific Development
+                            Funds from Shenzhen University.
                         </p>
                         <br>
                     </div>
                 </div>
             </div>
         </div>
-    </section> -->
+    </section>
     <!--/ Acknowledgements. -->
+
+    <!-- References. -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column is-full-width">
+                    <h2 class="title is-3">References</h2>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/ References. -->
 
     <footer class="footer">
         <div class="container">
