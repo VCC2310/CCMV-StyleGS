@@ -29,11 +29,26 @@ $(document).ready(function () {
             mid: "static/images/counter_aug.png",
             top: "static/images/counter_gt.png"
         },
+        bicycle: {
+            base: "static/images/bicycle.png",
+            mid: "static/images/bicycle_aug.png",
+            top: "static/images/bicycle_gt.png"
+        },
+        garden: {
+            base: "static/images/garden.png",
+            mid: "static/images/garden_aug.png",
+            top: "static/images/garden_gt.png"
+        },
         truck: {
             base: "static/images/truck.png",
             mid: "static/images/truck_aug.png",
             top: "static/images/truck_gt.png"
-        }
+        },
+        drjohnson: {
+            base: "static/images/drjohnson.png",
+            mid: "static/images/drjohnson_aug.png",
+            top: "static/images/drjohnson_gt.png"
+        },
     };
     const imgBase = document.getElementById("img-base");
     const imgMid = document.getElementById("img-mid");
