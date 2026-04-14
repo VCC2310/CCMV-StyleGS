@@ -175,23 +175,33 @@ body {
   top: 0;
   width: 4px;
   height: 100%;
-  background: #00d1ff;
+  background: #ffffff;
   z-index: 10;
   cursor: ew-resize;
   touch-action: none;
   box-shadow: 0 0 0 1px rgba(255,255,255,0.9);
 }
+.handle::before,
 .handle::after {
-  content: "";
   position: absolute;
   top: 50%;
+  transform: translateY(-50%);
+  color: #ffffff;
+  font-size: 20px;
+  line-height: 1;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+}
+
+.handle::before {
+  content: "❮";
   left: 50%;
-  width: 18px;
-  height: 18px;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  background: #00d1ff;
-  border: 2px solid #fff;
+  margin-left: -11px;
+}
+
+.handle::after {
+  content: "❯";
+  left: 50%;
+  margin-left: 0px;
 }
 
 /* 标签（可选） */
@@ -199,12 +209,41 @@ body {
   position: absolute;
   top: 10px;
   z-index: 20;
-  font-size: 12px;
+  font-size: 17px;
   color: #fff;
-  background: rgba(0,0,0,0.55);
+  background: rgba(108, 108, 108, 0.55);
   padding: 4px 8px;
   border-radius: 6px;
 }
-.label-base { left: 10px; }
-.label-mid  { left: 90px; }
-.label-top  { left: 190px; }
+.label-base { top: 90%; left: 15%; transform: translateX(-50%);}
+.label-mid  { top: 90%; left: 50%; transform: translateX(-50%);}
+.label-top  { top: 90%; left: 85%; transform: translateX(-50%);}
+
+.scene-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.scene-tab {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(108, 108, 108, 0.18);
+  color: #fff;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.2s ease;
+}
+
+.scene-tab {
+  background: #eee;
+  color: #222;
+}
+
+.scene-tab.active {
+  background: #4c8bf5;
+  color: #fff;
+}

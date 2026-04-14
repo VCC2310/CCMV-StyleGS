@@ -194,8 +194,8 @@
                             Our Gaussian supplementation strategy significantly enhances rendering quality across existing GS scenes. It is worth
                             noting that, within the MCMC framework, although second-order SH (i.e., sh=2) reduce the parameter count by 21 per
                             primitive compared to third-order SH (sh=3), they still achieve comparable rendering quality. Both approaches outperform
-                            the state-of-the-art implicit method Barron et al. (2023), demonstrating that our method facilitates the adaptation of
-                            Gaussian splatting to low-end hardware platforms. Compared with DBS Liu et al. (2025), the state-of-the-art
+                            the state-of-the-art implicit method [Barron et al. 2023], demonstrating that our method facilitates the adaptation of
+                            Gaussian splatting to low-end hardware platforms. Compared with [DBS Liu et al. 2025], the state-of-the-art
                             explicit approach, our method outperforms it on real-world datasets. Compared with specular-aware methods, VoD-3DGS and
                             Spec-Gaussian, our method achieves better results on almost all datasets.
                         </p>
@@ -236,22 +236,57 @@
     <section class="section">
         <div class="container">
     
+            <div class="scene-tabs" id="scene-tabs">
+                <button class="scene-tab active" data-scene="bonsai">Bonsai</button>
+                <button class="scene-tab" data-scene="counter">Counter</button>
+                <button class="scene-tab" data-scene="truck">Truck</button>
+            </div>
+
             <div id="triple-compare" class="triple-compare">
-                <div class="layer layer-base"><img src="static/images/bonsai.png" /></div>
-                <div class="layer layer-mid"><img src="static/images/bonsai_aug.png" /></div>
-                <div class="layer layer-top"><img src="static/images/bonsai_gt.png" /></div>
+                <div class="layer layer-base">
+                    <img id="img-base" src="static/images/bonsai.png" />
+                </div>
+                <div class="layer layer-mid">
+                    <img id="img-mid" src="static/images/bonsai_aug.png" />
+                </div>
+                <div class="layer layer-top">
+                    <img id="img-top" src="static/images/bonsai_gt.png" />
+                </div>
     
                 <!-- 两个滑块手柄 -->
                 <div class="handle handle-1" aria-label="Slider 1"></div>
                 <div class="handle handle-2" aria-label="Slider 2"></div>
     
                 <!-- 标签（可选） -->
-                <div class="label label-base">Raw</div>
+                <div class="label label-base">3DGS-MCMC</div>
                 <div class="label label-mid">Augmented</div>
                 <div class="label label-top">Reference</div>
             </div>
         </div>
     </section>
+
+    <!-- BibTex -->
+    <section class="section"></section>
+    <div class="container is-max-desktop">
+        <div class="columns is
+            -centered">
+            <div class="column is-full-width">
+                <h2 class="title is-3">BibTeX</h2>
+                <div class="content has-text-justified">
+                    <pre>
+@inproceedings{
+    yang2026augmented,
+    title={Augmented Radiance Field: A General Framework for Enhanced Gaussian Splatting},
+    author={Yixin Yang and Bojian Wu and Yang Zhou and Hui Huang},
+    booktitle={The Fourteenth International Conference on Learning Representations},
+    year={2026},
+    url={https://openreview.net/forum?id=IzlaRUHncO}
+}</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Acknowledgements. -->
     <section class="section"></section>
@@ -280,6 +315,38 @@
                 <div class="column is-full-width">
                     <h2 class="title is-3">References</h2>
 
+                    <ol class="references-list">
+                        <li>
+                            <a href="https://ieeexplore.ieee.org/document/10378328" target="_blank">Jonathan T Barron, Ben
+                                Mildenhall, Dor Verbin, Pratul P Srinivasan, and Peter Hedman. Zip-NeRF: Anti-aliased
+                                grid-based neural radiance fields. ICCV, 2023.</a>
+                        </li>
+
+                        <li>
+                            <a href="https://arxiv.org/abs/2501.18630" target="_blank">Rong Liu, Dylan Sun, Meida Chen, Yue
+                                Wang, and Andrew Feng. Deformable beta splatting. SIGGRAPH, 2025.</a>
+                        </li>
+
+                        <li>
+                            <a href="https://arxiv.org/abs/2404.09591" target="_blank">Shakiba Kheradmand, Daniel Rebain,
+                                Gopal Sharma, Weiwei Sun, Yang-Che Tseng, Hossam Isack,
+                                Abhishek Kar, Andrea Tagliasacchi, and Kwang Moo Yi. 3D Gaussian splatting as markov chain
+                                monte carlo. NeurIPS, 2024.</a>
+                        </li>
+
+                        <li>
+                            <a href="https://arxiv.org/abs/2501.17978" target="_blank">Mateusz Nowak, Wojciech Jarosz, and
+                                Peter Chin. VoD-3DGS: View-opacity-dependent 3D Gaussian splatting. arXiv preprint
+                                2501.17978, 2025.</a>
+                        </li>
+
+                        <li>
+                            <a href="https://arxiv.org/abs/2402.15870" target="_blank">Ziyi Yang, Xinyu Gao, Yang-Tian Sun,
+                                Yi-Hua Huang, Xiaoyang Lyu, Wen Zhou,
+                                Shaohui Jiao, Xiaojuan Qi, and Xiaogang Jin. Spec-Gaussian: Anisotropic view-dependent
+                                appearance for 3D Gaussian splatting. NeurIPS, 2024.</a>
+                        </li>
+                    </ol>
 
                 </div>
             </div>

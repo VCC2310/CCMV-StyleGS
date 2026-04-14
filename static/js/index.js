@@ -18,6 +18,42 @@ $(document).ready(function () {
 
     bulmaSlider.attach();
 
+    const scenes = {
+        bonsai: {
+            base: "static/images/bonsai.png",
+            mid: "static/images/bonsai_aug.png",
+            top: "static/images/bonsai_gt.png"
+        },
+        counter: {
+            base: "static/images/counter.png",
+            mid: "static/images/counter_aug.png",
+            top: "static/images/counter_gt.png"
+        },
+        truck: {
+            base: "static/images/truck.png",
+            mid: "static/images/truck_aug.png",
+            top: "static/images/truck_gt.png"
+        }
+    };
+    const imgBase = document.getElementById("img-base");
+    const imgMid = document.getElementById("img-mid");
+    const imgTop = document.getElementById("img-top");
+    const tabs = document.querySelectorAll(".scene-tab");
+
+    tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+            const scene = tab.dataset.scene;
+            const data = scenes[scene];
+
+            imgBase.src = data.base;
+            imgMid.src = data.mid;
+            imgTop.src = data.top;
+
+            tabs.forEach(t => t.classList.remove("active"));
+            tab.classList.add("active");
+        });
+    });
+
     function initTripleCompare(selector, init1 = 35, init2 = 70) {
         const box = document.querySelector(selector);
         if (!box) return;
