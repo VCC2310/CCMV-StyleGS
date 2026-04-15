@@ -219,12 +219,12 @@
         <div class="container is-max-desktop">
             <div class="columns is-vcentered is-mobile">
                 <div class="column is-6">
-                    <video class="video-small" controls muted autoplay loop>
+                    <video class="video-small" controls muted loop preload="none">
                         <source src="static/videos/MipNerf.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="column is-6">
-                    <video class="video-small" controls muted autoplay loop>
+                    <video class="video-small" controls muted loop preload="none">
                         <source src="static/videos/NeRF_Syn.mp4" type="video/mp4">
                     </video>
                 </div>
@@ -267,6 +267,39 @@
             </div>
         </div>
     </section>
+
+
+    <section class="section">
+        <div class="container">
+    
+            <div class="scene-tabs" id="scene-tabs-dc">
+                <button class="scene-tab active" data-scene="bonsai">Bonsai</button>
+                <button class="scene-tab" data-scene="counter">Counter</button>
+            </div>
+    
+            <div id="triple-compare-dc" class="triple-compare">
+                <div class="layer layer-base">
+                    <img id="img-base-dc" src="static/images/bonsai_basic.png" />
+                </div>
+                <div class="layer layer-mid">
+                    <img id="img-mid-dc" src="static/images/bonsai_2DGS.png" />
+                </div>
+                <div class="layer layer-top">
+                    <img id="img-top-dc" src="static/images/bonsai_proj.png" />
+                </div>
+    
+                <!-- 两个滑块手柄 -->
+                <div class="handle handle-1" aria-label="Slider 1"></div>
+                <div class="handle handle-2" aria-label="Slider 2"></div>
+    
+                <!-- 标签（可选） -->
+                <div class="label label-base">3DGS-MCMC</div>
+                <div class="label label-mid">2D Gaussian</div>
+                <div class="label label-top">Projected 3DGS</div>
+            </div>
+        </div>
+    </section>
+
 
     <!-- BibTex -->
     <section class="section"></section>

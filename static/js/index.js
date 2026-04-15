@@ -50,10 +50,27 @@ $(document).ready(function () {
             top: "static/images/drjohnson_gt.png"
         },
     };
+    const scenes_dc = {
+        bonsai: {
+            base: "static/images/bonsai_basic.png",
+            mid: "static/images/bonsai_2DGS.png",
+            top: "static/images/bonsai_proj.png"
+        },
+        counter: {
+            base: "static/images/counter_basic.png",
+            mid: "static/images/counter_2DGS.png",
+            top: "static/images/counter_proj.png"
+        },
+    }
     const imgBase = document.getElementById("img-base");
     const imgMid = document.getElementById("img-mid");
     const imgTop = document.getElementById("img-top");
-    const tabs = document.querySelectorAll(".scene-tab");
+    const tabs = document.querySelectorAll("#scene-tabs .scene-tab");
+
+    const imgBase_dc = document.getElementById("img-base-dc");
+    const imgMid_dc = document.getElementById("img-mid-dc");
+    const imgTop_dc = document.getElementById("img-top-dc");
+    const tabs_dc = document.querySelectorAll("#scene-tabs-dc .scene-tab");
 
     tabs.forEach(tab => {
         tab.addEventListener("click", () => {
@@ -65,6 +82,19 @@ $(document).ready(function () {
             imgTop.src = data.top;
 
             tabs.forEach(t => t.classList.remove("active"));
+            tab.classList.add("active");
+        });
+    });
+    tabs_dc.forEach(tab => {
+        tab.addEventListener("click", () => {
+            const scene = tab.dataset.scene;
+            const data = scenes_dc[scene];
+
+            imgBase_dc.src = data.base;
+            imgMid_dc.src = data.mid;
+            imgTop_dc.src = data.top;
+
+            tabs_dc.forEach(t => t.classList.remove("active"));
             tab.classList.add("active");
         });
     });
@@ -131,4 +161,6 @@ $(document).ready(function () {
     }
 
     initTripleCompare("#triple-compare", 25, 75);
+    initTripleCompare("#triple-compare-dc", 25, 75);
+
 })

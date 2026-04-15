@@ -142,12 +142,12 @@ body {
 .triple-compare {
   position: relative;
   width: min(100%, 960px);
-  aspect-ratio: 16 / 9;   /* 你也可以改 4/3 */
+  aspect-ratio: 16 / 9;
   margin: 0 auto;
   overflow: hidden;
   border-radius: 12px;
-  border: 1px solid #d9d9d9;
-  background: #000;
+  border: 1px solid #bbbbbb;
+  background: #ffffff;
   user-select: none;
 }
 
