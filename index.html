@@ -43,7 +43,7 @@
                             <span class="author-block">
                                 <a href="https://vcc.tech/~huihuang">Daniel Cohen-Or</a><sup>4</sup>,</span>
                             <span class="author-block">
-                                <a href="https://vcc.tech/~huihuang">Hui Huang</a><sup>1</sup>,</span>
+                                <a href="https://vcc.tech/~huihuang">Hui Huang</a><sup>1</sup></span>
                         </div>
     
                         <div class="is-size-5 publication-authors">
@@ -126,14 +126,8 @@
                     <h2 class="title is-3">Abstract</h2>
                     <div class="content has-text-justified">
                         <p>
-                            Due to the real-time rendering performance, 3D Gaussian Splatting (3DGS) has emerged as the leading method for radiance
-                            field reconstruction. However, its reliance on spherical harmonics for color encoding inherently limits its ability to
-                            separate diffuse and specular components, making it challenging to accurately represent complex reflections. To address
-                            this, we propose a novel enhanced Gaussian kernel that explicitly models specular effects through view-dependent
-                            opacity. Meanwhile, we introduce an error-driven compensation strategy to improve rendering quality in existing 3DGS
-                            scenes. Our method begins with 2D Gaussian initialization and then adaptively inserts and optimizes enhanced Gaussian
-                            kernels, ultimately producing an <b>augmented radiance field</b>. Experiments demonstrate that our method not only
-                            surpasses state-of-the-art NeRF methods in rendering performance but also achieves greater parameter efficiency.</p>
+                            While 3D Gaussian Splatting (3DGS) provides an efficient and explicit representation for novel view synthesis, enforcing stylistic coherence across viewpoints remains challenging. Existing 3D stylization methods typically apply 2D feature-matching losses independently per rendered view, which leads to unstable style allocation, many-to-one feature reuse, and limited cross-view consistency. We propose a capacity-controlled framework for multi-view stylization of 3DGS, grounded in optimal transport. Specifically, we reformulate local style matching as a semi-balanced optimal transport problem. By introducing explicit column-capacity constraints with tunable strength, our formulation mitigates many-to-one matching and enables controllable allocation of style features. This transport-based objective provides a principled mechanism for balancing feature coverage and stylistic diversity while maintaining stable correspondences across viewpoints. To further enhance cross-view coherence, we incorporate a novel cross-view matching guidance to constrain correspondences between scene content and style patterns. In addition, we introduce several geometric regularizations to enhance the vanilla 3DGS, thereby enabling optimized Gaussian primitives to represent finer-grained textures during stylization. Extensive experiments demonstrate that our approach significantly improves multi-view stylistic consistency and produces stable, expressive 3D stylizations while preserving the core semantic structure of the scene.
+                        </p>
                     </div>
                 </div>
             </div>
