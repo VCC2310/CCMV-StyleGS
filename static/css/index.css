@@ -247,3 +247,22 @@ body {
   background: #4c8bf5;
   color: #fff;
 }
+
+#result-carousel {
+    overflow: hidden;
+}
+
+#result-carousel img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+#result-carousel video {
+    width: 100%;
+    border-radius: 8px;
+}
+
+#result-carousel .columns {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
