@@ -186,3 +186,12 @@ $(document).ready(function () {
     initTripleCompare("#triple-compare-dc", 25, 75);
 
 })
+
+bulmaCarousel.attach('#result-carousel', {
+    slidesToScroll: 1,
+    slidesToShow: 1,
+    loop: true,
+    autoplay: false,
+    pagination: true,
+    navigation: true
+});
