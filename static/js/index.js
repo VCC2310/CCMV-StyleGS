@@ -191,7 +191,7 @@ bulmaCarousel.attach('#result-carousel', {
     slidesToScroll: 1,
     slidesToShow: 1,
     loop: true,
-    autoplay: false,
+    autoplay: true,
     pagination: true,
     navigation: true
 });
