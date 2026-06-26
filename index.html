@@ -144,13 +144,12 @@
 
                     <div class="content has-text-justified">
                         <p>
-                            We introduce an <b>error-driven densification</b> strategy: we first optimize 2D Gaussians in image space to reduce
-                            residual errors (left). Then we leverage depth map information to <b>back-project</b> 2D Gaussians into world space,
-                            and apply clustering, WPCA, and scaling calibration to minimize projection errors. The new primitives are initialized
-                            with a view-dependent opacity lobe oriented toward the corresponding camera (middle). We then jointly optimize the
-                            augmented Gaussians with the original scene to recover challenging view-dependent color and improve photometric
-                            consistency (right). Our post‑enhancement is plug‑and‑play with existing 3DGS frameworks and achieves higher quality
-                            with fewer SH parameters, especially for complex reflections.
+                            Our framework contains two stages: <b>enhanced reconstruction</b> and <b>capacity-controlled stylization</b>. 
+                            In the reconstruction stage, we optimize the 3D Gaussians using estimated depth as geometric constraints to 
+                            achieve more accurate scene reconstruction. Meanwhile, we regularize the scale and shape of the primitives to 
+                            better represent stylized textures later. Then, in the stylization stage, we introduce a <b>Capacity-Controlled 
+                            Feature Transport (CCFT) loss</b> and <b>cross-view matching guidance</b> to obtain coherent stylized views. With a content 
+                            loss that preserves scene structure, we update the color parameters of 3D Gaussians, yielding the final stylized 3D scene.
                         </p>
                     </div>
                     <div class="method-image" style="text-align: center;">
