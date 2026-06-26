@@ -254,22 +254,20 @@ body {
 
 #result-carousel img {
     width: 100%;
-    border-radius: 8px;
 }
 
 #result-carousel video {
     width: 100%;
-    border-radius: 8px;
 }
 
 #result-carousel .columns {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .video-caption {
     text-align: center;
-    margin-top: 8px;
+    margin-top: 5px;
     font-size: 0.95rem;
     font-weight: 500;
 }
